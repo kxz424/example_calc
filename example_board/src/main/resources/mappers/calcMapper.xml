@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.kjs.ex.mapper.CalcMapper">
+
+	<insert id="insert" >
+		insert into calc (FORMULA, RESULT) values (#{formula}, #{result})
+	</insert>
+	
+	<delete id="delete">
+		delete from calc where rnum = (select * from (select max(rnum) from calc) as a)
+	</delete>
+
+</mapper>
