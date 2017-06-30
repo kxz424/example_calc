@@ -9,7 +9,7 @@
 	</insert>
 	
 	<delete id="delete">
-		delete from calc where MAX(RNUM)
+		delete from calc where rnum = (select * from (select max(rnum) from calc) as a)
 	</delete>
 
 </mapper>

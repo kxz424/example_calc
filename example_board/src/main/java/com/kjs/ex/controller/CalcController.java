@@ -52,16 +52,16 @@ public class CalcController {
 		
 	}
 	
-//	@RequestMapping(value = "/delete", method = RequestMethod.POST)
-//	public String deletePOST(CalcVO vo, RedirectAttributes rttr) throws Exception {
-//		
-//		logger.info("delete post.....................");
-//		
-//		service.delete(vo);
-//		rttr.addFlashAttribute("msg", "clear");
-//		
-//		return "redirect:/home4";
-//	}
+	@RequestMapping(value = "/delete", method = RequestMethod.POST)
+	public String deletePOST(CalcVO vo, RedirectAttributes rttr) throws Exception {
+		
+		logger.info("delete post.....................");
+		
+		service.delete(vo);
+		rttr.addFlashAttribute("msg", "clear");
+		
+		return "redirect:/home4";
+	}
 
 }
 

@@ -353,11 +353,10 @@ $(document).ready(function(e) {
 		$('#operation').val('');
 		$('#result').val('');
 		$('#operation').removeClass('activeAnswer');
-
+// 		alert($('#answer').val());
+		$('#equals').attr('onclick','');
 		formObj.attr("action", "/delete");
 		formObj.submit();
-
-		$('#equals').attr('onclick','');
 				
 	});
 	
