@@ -3,24 +3,70 @@
 
 <style type="text/css">
 
-#answer,#answer2 {
+#calc,#recode {
+	width: 400px;
+	height: 560px;
+	position: absolute;
+	margin-left: 30%;
+	border: 1px solid #ddd;
+}
+#bt input {
+	width: 100px;
+	height: 70px;
+	float: left;
+	border: 0;
+	background: #eee;
+	font-size: 18pt;
+	font-weight: bold;
+}
+#answer, #answer2 {
+	width: 100%;
+	height: 70px;
+	border: 0;
+	background: #fff;
 	text-align: right;
-	
+	padding: 10px;
+}
+#answer {
+	font-size: 15pt;
+}
+#answer2 {
+	font-size: 25pt;
+	font-weight: bold;
+	border-bottom: 1px solid #ddd;
+}
+input#remainder,input#sqrt,input#pow,input#frac {
+	background: #fff;
+}
+#bt input:hover {
+	background: #999;
+}
+#bt input:active {
+	background: #777;
+}
+#C {
+	color: red;
+}
+#CE {
+	color: blue;
 }
 #recode {
-	margin: 100px;
-	position: relative;
-	left: 10px;
-	bottom: 170px;
-	height: 239.5px;
-	
-/* 	margin-top: auto; */
+	width: 400px;
+	height: 562px;
+	margin-left: 40%;
+	margin-top: 0;
+	position: absolute;
+	top: 0;
+	left: 62%;
+	border: 1px solid #ddd;
 	
 }
-#recodetext {
- 	height: 309.5px;
- 	width: 200px;
+#recodetitle {
+	font-size: 18pt;
+	font-weight: bold;
+	border: 0;
 }
+
 
 </style>
 <meta charset="utf-8">
@@ -28,81 +74,76 @@
 </head>
 
 <body>
-
+<div id="calc">
     <form action="" id="calculator" role="form" method="post">
-    <div style="width:200px; margin:auto;">
-    	<input type="hidden" id="operation" name="formula" value=""/>
+    	<input type="hidden" id="operation" name="formula" value="" />
     	<input type="hidden" id="result" name="result" value="" />
-    	<input type="text" id="answer" value="" style="width:100%; height:35px;" disabled="disabled"/>
-    	<input type="text" id="answer2" name="answer2" value="" style="width:100%; height:35px;" disabled="disabled" />
-    
-    <div>
-    	<div>
-    		<input type="button" value="%" id="remainder" style="width:50px; height:40px; float:left;"/>
-    		<input type="button" value="√" id="sqrt" style="width:50px; height:40px; float:left;"/>
-    		<input type="button" value="x²" id="pow" style="width:50px; height:40px; float:left;"/>
-    		<input type="button" value="1/x" id="frac" style="width:50px; height:40px; float:left;"/>
-    	</div>
-    	<div>
-    		<input type="button" value="CE" id="CE" style="width:50px; height:40px; float:left; color:blue"/>
-    		<input type="button" value="C" id="C" style="width:50px; height:40px; float:left; color:red;"/>
-    		<input type="button" value="←" id="backspace" style="width:50px; height:40px; float:left;"/>
-    		<input type="button" value="/" id="divide" style="width:50px; height:40px; float:left;"/>
-    	</div>
-    	<div>
-        	<input type="button" value="1" id="1" style="width:50px; height:40px; float:left;"/>
-        	<input type="button" value="2" id="2" style="width:50px; height:40px; float:left;"/>
-        	<input type="button" value="3" id="3" style="width:50px; height:40px; float:left;"/>
-        	<input type="button" value="+" id="plus" style="width:50px; height:40px; float:left;"/>
-        </div>
-        <div>
-        	<input type="button" value="4" id="4" style="width:50px; height:40px; float:left;"/>
-        	<input type="button" value="5" id="5" style="width:50px; height:40px; float:left;"/>
-        	<input type="button" value="6" id="6" style="width:50px; height:40px; float:left;"/>
-        	<input type="button" value="-" id="subtract" style="width:50px; height:40px; float:left;"/>
-        </div>
-        <div>
-        	<input type="button" value="7" id="7" style="width:50px; height:40px; float:left;"/>
-        	<input type="button" value="8" id="8" style="width:50px; height:40px; float:left;"/>
-        	<input type="button" value="9" id="9" style="width:50px; height:40px; float:left;"/>
-        	<input type="button" value="*" id="product" style="width:50px; height:40px; float:left;"/>
-        </div>
-        <div>
-        	<input type="button" value="±" id="negate" style="width:50px; height:40px; float:left;"/>
-        	<input type="button" value="0" id="0" style="width:50px; height:40px; float:left;"/>
-        	<input type="button" value="." id="decimal_point" style="width:50px; height:40px; float:left;"/>
-        	<input type="submit" value="=" id="equals" style="width:50px; height:40px; float:left;"/>
-    	</div>
+    	<input type="text" id="answer" value="" disabled="disabled" />
+    	<input type="text" id="answer2" name="answer2" value="" disabled="disabled" />
+    	
+    	<div id="bt">
+    		<input type="button" value="%" id="remainder" />
+    		<input type="button" value="√" id="sqrt" />
+    		<input type="button" value="x²" id="pow" />
+    		<input type="button" value="1/x" id="frac" />
+    	
+    		<input type="submit" value="CE" id="CE" />
+    		<input type="button" value="C" id="C" />
+    		<input type="button" value="←" id="backspace" />
+    		<input type="button" value="/" id="divide" />    		
+    	
+        	<input type="button" value="7" id="7" />
+        	<input type="button" value="8" id="8" />
+        	<input type="button" value="9" id="9" />
+        	<input type="button" value="*" id="product" />        	
+        
+        	<input type="button" value="4" id="4" />
+        	<input type="button" value="5" id="5" />
+        	<input type="button" value="6" id="6" />
+        	<input type="button" value="-" id="subtract" />
+        	
+        	<input type="button" value="1" id="1" />
+        	<input type="button" value="2" id="2" />
+        	<input type="button" value="3" id="3" />
+        	<input type="button" value="+" id="plus" />
+        	
+        	<input type="button" value="±" id="negate" />
+        	<input type="button" value="0" id="0" />
+        	<input type="button" value="." id="decimal_point" />
+        	<input type="submit" value="=" id="equals" />
     	</div>
     	<div id="recode">
-<!--     		<input type="text" id="recodetext" value="111" disabled="disabled" /> -->
-    		
-    	</div>
+		<input id="recodetitle" value="기록" />
+	</div>
+    </form>
     
 </div>
-</form>
+
 </body>
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(e) {
+	var formObj = $("form[role='form']");
 	$('#answer2').val('${result}');
 	$('#operation').val($('#answer').val());
-	var formObj = $("form[role='form']");
 	
 	//숫자 클릭
     $('#1,#2,#3,#4,#5,#6,#7,#8,#9,#0').click(function(e){
     	//방금 클릭한 숫자를 저장
 		var v = $(this).val();
     	var v2 = $('#answer2').val();
-    	//클릭된 숫자를 원래 문자 뒤에 계속 더함
-		$('#answer').val($('#answer').val() + v);
-    	if($('#answer2').attr('class') == 'number') {
-    		$('#answer2').val(v2 + v);
-    	} else {
-    		$('#answer2').val(v);
+    	if(v2.length <= 15) {
+    		//클릭된 숫자를 원래 문자 뒤에 계속 더함
+    		$('#answer').val($('#answer').val() + v);
+        	if($('#answer2').attr('class') == 'number') {
+        		$('#answer2').val(v2 + v);
+        	} else {
+        		$('#answer2').val(v);
+        	}
+    		$('#answer2').addClass('number');
     	}
-		$('#answer2').addClass('number');
+    	
     	
 	});
 	
@@ -131,7 +172,7 @@ $(document).ready(function(e) {
 		}
 		$('#answer').val($('#operation').val());
 		$('#answer2').attr('class', '');
-		$('#answer2').val('');
+// 		$('#answer2').val('');
 		$('#operation').attr('class', '');
     });
 	
@@ -226,7 +267,6 @@ $(document).ready(function(e) {
 	
 	//제곱근 클릭
 	$('#sqrt').click(function(e) {
-		
 		var sqrt = Math.sqrt;
 	
 		if($('#answer').val() == ''){
@@ -269,7 +309,6 @@ $(document).ready(function(e) {
 	
 	//n분의 1 클릭
 	$('#frac').click(function(e) {
-	
 		if($('#answer').val() == ''){
 			//이벤트 전파 막고 이벤트 기본동작 중단
 			return false;	
@@ -314,10 +353,11 @@ $(document).ready(function(e) {
 		$('#operation').val('');
 		$('#result').val('');
 		$('#operation').removeClass('activeAnswer');
-// 		alert($('#answer').val());
-		$('#equals').attr('onclick','');
+
 		formObj.attr("action", "/delete");
 		formObj.submit();
+
+		$('#equals').attr('onclick','');
 				
 	});
 	
@@ -336,6 +376,8 @@ $(document).ready(function(e) {
 	$('#equals').click(function(){
 		
 		if($('#equals').attr('onclick') != 'return false'){
+			
+			var formObj = $("form[role='form']");
 		
 			var a = $('#answer2').val();
 			var b = $('#operation').val();
@@ -358,9 +400,20 @@ $(document).ready(function(e) {
 // 			$('#answer').val('');
 			
 			formObj.submit();
-			$('#answer2').val('${result}');
+// 			$('#answer2').val('${result}');
 			alert("계산 완료!!!");
-			
+			var rc = 1;
+			$('#recode').append($('<input/>', {
+				id: 'operation' + rc,
+				value: $('#answer').val() + "=",
+				type: 'text'
+			}));
+			$('#recode').append($('<input/>', {
+				id: 'result' + rc,
+				value: $('#answer2').val(),
+				type: 'text'
+			}));
+			rc++;
 			
 			$('#equals').attr('onclick','return false');
 		

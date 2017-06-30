@@ -19,6 +19,7 @@ import com.kjs.ex.service.CalcService;
 import com.kjs.ex.vo.CalcVO;
 
 @Controller
+@RequestMapping("")
 public class CalcController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(CalcController.class);
@@ -51,16 +52,16 @@ public class CalcController {
 		
 	}
 	
-	@RequestMapping(value = "/delete", method = RequestMethod.POST)
-	public String deletePOST(CalcVO vo, RedirectAttributes rttr) throws Exception {
-		
-		logger.info("delete post.....................");
-		
-		service.delete(vo);
-		rttr.addFlashAttribute("msg", "clear");
-		
-		return "redirect:/home4";
-	}
+//	@RequestMapping(value = "/delete", method = RequestMethod.POST)
+//	public String deletePOST(CalcVO vo, RedirectAttributes rttr) throws Exception {
+//		
+//		logger.info("delete post.....................");
+//		
+//		service.delete(vo);
+//		rttr.addFlashAttribute("msg", "clear");
+//		
+//		return "redirect:/home4";
+//	}
 
 }
 
