@@ -27,27 +27,31 @@ public class CalcController {
 	@Inject
 	private CalcService service;
 	
-	@RequestMapping(value = "/home4", method = RequestMethod.GET)
+	@RequestMapping(value = "/calc", method = RequestMethod.GET)
 	public void registerGET(Model model) throws Exception {
 		
 		logger.info("register get ................");
 		
-//		return "home4";
-		
 	}
 	
-	@RequestMapping(value = "/home4", method = RequestMethod.POST)
+	@RequestMapping(value = "/calc", method = RequestMethod.POST)
 	public String registerPOST(CalcVO vo, RedirectAttributes rttr) throws Exception {
 		
 		logger.info("regist post ...................");
 		logger.info(vo.toString());
+		try {
+			if(vo.getResult() != null){
+				service.insert(vo);
+			}
+			DecimalFormat df = new DecimalFormat("#.###############");
+			Double result = vo.getResult();
+			rttr.addFlashAttribute("result", df.format(result));
+			rttr.addFlashAttribute("formula", vo.getFormula());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
-		service.insert(vo);
-		DecimalFormat df = new DecimalFormat("#.###############");
-		Double result = vo.getResult();
-		rttr.addFlashAttribute("result", df.format(result));
-		
-		return "redirect:/home4";
+		return "redirect:/calc";
 		
 		
 	}
@@ -56,11 +60,14 @@ public class CalcController {
 	public String deletePOST(CalcVO vo, RedirectAttributes rttr) throws Exception {
 		
 		logger.info("delete post.....................");
-		
-		service.delete(vo);
-		rttr.addFlashAttribute("msg", "clear");
-		
-		return "redirect:/home4";
+
+		try {
+			service.delete(vo);
+			rttr.addFlashAttribute("msg", "clear");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "redirect:/calc";
 	}
 
 }

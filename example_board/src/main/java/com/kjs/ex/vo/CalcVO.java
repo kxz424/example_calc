@@ -24,8 +24,4 @@ public class CalcVO {
 		return "CalcVO [formula=" + formula + ", result=" + result + "]";
 	}
 	
-	
-	
-	
-
 }
